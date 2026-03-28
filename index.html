@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beauty Shop</title>
+<style>
+body{ font-family:Arial; margin:0; padding:0; background:#fafafa;}
+.topbar{ background:#ff4d6d; color:white; text-align:center; padding:8px;}
+.navbar{ display:flex; justify-content:space-between; align-items:center; padding:15px; background:black; color:white;}
+.navbar ul{ display:flex; gap:15px; list-style:none; align-items:center;}
+button{ padding:8px 15px; background:#ff4d6d; color:white; border:none; cursor:pointer; margin-top:5px; border-radius:5px;}
+.login-btn{background:black; border:1px solid white;}
+.cart-count{ position:relative; background:red; color:white; padding:2px 6px; border-radius:50%; font-size:12px; top:-10px; left:-5px;}
+.container{ display:flex;}
+.sidebar{ width:200px; padding:20px; background:#f5f5f5;}
+.products{ display:flex; flex-wrap:wrap; gap:20px; padding:20px; justify-content:center;}
+.card{ width:200px; border:1px solid #ddd; padding:10px; border-radius:10px; text-align:center; background:white; transition:0.3s; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+.card:hover{ transform:scale(1.05);}
+.card img{ width:100%; height:150px; object-fit:cover; border-radius:10px;}
+</style>
+</head>
+<body>
+
+<div class="topbar">Call Us: +123-456-789 | Get 20% OFF on first order</div>
+
+<nav class="navbar">
+<h2>Beauty Shop</h2>
+<ul>
+<li>Home</li>
+<li>Shop</li>
+<li>Skin Care</li>
+<li>Makeup</li>
+<li>Hair Care</li>
+<li><button class="login-btn" onclick="login()">Login</button></li>
+<li style="cursor:pointer; position:relative;" onclick="goToCart()">
+🛒 Cart <span id="cartCount" class="cart-count">0</span>
+</li>
+</ul>
+</nav>
+
+<div style="text-align:center; margin:20px;"><h1>Our Products</h1></div>
+
+<div class="container">
+<div class="sidebar">
+<h3>Filter</h3>
+<p>Skin Care</p>
+<p>Makeup</p>
+<p>Hair Care</p>
+<p>Body Care</p>
+</div>
+
+<div class="products">
+
+<!-- 12 PRODUCT CARDS -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30">
+<h4>SilkSkin Serum</h4>
+<p>$35</p>
+<button data-name="SilkSkin Serum" data-price="35" data-img="https://images.unsplash.com/photo-1596464716127-f2a82984de30">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd">
+<h4>Argan Glow Oil</h4>
+<p>$63</p>
+<button data-name="Argan Glow Oil" data-price="63" data-img="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908">
+<h4>Smooth Foundation</h4>
+<p>$20</p>
+<button data-name="Smooth Foundation" data-price="20" data-img="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be">
+<h4>Body Cream</h4>
+<p>$30</p>
+<button data-name="Body Cream" data-price="30" data-img="https://images.unsplash.com/photo-1620916566398-39f1143ab7be">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6">
+<h4>Herbal Soap</h4>
+<p>$10</p>
+<button data-name="Herbal Soap" data-price="10" data-img="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1580870069867-74c57ee1bb07">
+<h4>HydraLux Serum</h4>
+<p>$25</p>
+<button data-name="HydraLux Serum" data-price="25" data-img="https://images.unsplash.com/photo-1580870069867-74c57ee1bb07">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1556228720-195a672e8a03">
+<h4>Essence Body Gel</h4>
+<p>$30</p>
+<button data-name="Essence Body Gel" data-price="30" data-img="https://images.unsplash.com/photo-1556228720-195a672e8a03">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19">
+<h4>Ocean Moisturizer</h4>
+<p>$22</p>
+<button data-name="Ocean Moisturizer" data-price="22" data-img="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc">
+<h4>Rose Face Wash</h4>
+<p>$15</p>
+<button data-name="Rose Face Wash" data-price="15" data-img="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1629198735660-e39ea93f5c8e">
+<h4>Night Repair Cream</h4>
+<p>$40</p>
+<button data-name="Night Repair Cream" data-price="40" data-img="https://images.unsplash.com/photo-1629198735660-e39ea93f5c8e">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1612817288484-6f916006741a">
+<h4>Lip Care Balm</h4>
+<p>$12</p>
+<button data-name="Lip Care Balm" data-price="12" data-img="https://images.unsplash.com/photo-1612817288484-6f916006741a">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273">
+<h4>Hair Growth Oil</h4>
+<p>$28</p>
+<button data-name="Hair Growth Oil" data-price="28" data-img="https://images.unsplash.com/photo-1596755389378-c31d21fd1273">Add to Cart</button>
+</div>
+
+</div>
+</div>
+
+<script>
+// Strictly prevent adding to cart without login
+function login(){
+    localStorage.setItem("isLoggedIn", "true");
+    alert("✅ Logged in successfully!");
+    enableCartButtons();
+    updateCartCount();
+}
+
+function enableCartButtons(){
+    const buttons = document.querySelectorAll('.products button');
+    buttons.forEach(btn => {
+        btn.onclick = function(){
+            const name = btn.dataset.name;
+            const price = parseFloat(btn.dataset.price);
+            const image = btn.dataset.img;
+            addToCart(name, price, image);
+        }
+    });
+}
+
+function addToCart(name, price, image){
+    if(localStorage.getItem("isLoggedIn") !== "true"){
+        alert("⚠ Please login first!");
+        return;
+    }
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push({name, price, image, quantity:1});
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+    alert(name + " added to cart ✅");
+}
+
+function updateCartCount(){
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    document.getElementById("cartCount").innerText = cart.length;
+}
+
+function goToCart(){
+    if(localStorage.getItem("isLoggedIn") !== "true"){
+        alert("⚠ Please login first!");
+        return;
+    }
+    window.location.href = "cart.html";
+}
+
+// Disable all buttons initially if not logged in
+if(localStorage.getItem("isLoggedIn") !== "true"){
+    const buttons = document.querySelectorAll('.products button');
+    buttons.forEach(btn => {
+        btn.onclick = function(){ alert("⚠ Please login first!"); }
+    });
+}
+
+// Initialize cart count
+updateCartCount();
+</script>
+
+</body>
+</html>
